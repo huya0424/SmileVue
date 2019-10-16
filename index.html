@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- user-scalable=no：禁止用户缩放 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>smilevue</title>
+    <style>
+      /* rem（font size of the root element）是相对长度单位。是相对于根元素（即html元素）的font-size计算值的倍数。 */
+      /* iphone5: 1rem = 16px, html和font-size=16px */
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+
+    <script>
+      // 移动端屏幕适配
+      // 在有些浏览器documentElement无效，可以使用body
+      let htmlWidth = document.documentElement.clientWidth || document.body.clientWidth;
+      let htmlDom = document.getElementsByTagName('html')[0];
+      if(htmlWidth > 750) {
+        htmlWidth = 750;//最大只能为750
+      }
+      htmlDom.style.fontSize = htmlWidth / 20 + 'px'; //一般情况下是以iphone5的宽度为标准：htmlDom.style.fontSize = 320 / 20 + 'px'
+    </script>
+  </body>
+</html>
