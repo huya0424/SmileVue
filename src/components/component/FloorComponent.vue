@@ -37,6 +37,9 @@
         created() {
         },
         watch: {
+            // 如果父组件传的是复合型的值（数组，对象），则写在watch里面，否则在取属性值时，容易报属性值未定义
+            // 也可以使用promise,async,await进行异步加载来代替watch
+            // 如果父组件传的是基本类型的值，则不用写在watch里面也可以正常运行
             floorData: function(val) {
                 this.floorData0 = this.floorData[0];
                 this.floorData1 = this.floorData[1];

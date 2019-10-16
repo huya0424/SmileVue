@@ -56,6 +56,22 @@
         <floor-component :floorData="floor1" :floorName="floorName.floor1"></floor-component>
         <floor-component :floorData="floor2" :floorName="floorName.floor2"></floor-component>
         <floor-component :floorData="floor3" :floorName="floorName.floor3"></floor-component>
+
+        <!-- hot area -->
+        <div class="hot-area">
+            <div class="hot-title">
+                热卖商品
+            </div>
+            <div class="hot-goods">
+                <van-list>
+                    <van-row>
+                        <van-col span="12" v-for="item in hotGoods" :key="item.goodsId">
+                            <goods-info-component :goodsImage="item.image" :goodsName="item.name" :goodsPrice="item.price"></goods-info-component>
+                        </van-col>
+                    </van-row>
+                </van-list>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -63,7 +79,9 @@
     import axios from 'axios'
     import 'swiper/dist/css/swiper.css'
     import {swiper, swiperSlide } from 'vue-awesome-swiper'
+    import url from '@/serviceAPI.config.js'
     import floorComponent from '../component/FloorComponent'
+    import goodsInfoComponent from '../component/GoodsInfoComponent'
     import { toMoney } from '@/filter/moneyFilter.js'
     // import SwiperDefault from '../swiper/SwiperDefault'
     // import SwiperDefault1 from '../swiper/SwiperDefault1'
@@ -84,16 +102,15 @@
                 floor1: [],
                 floor2: [],
                 floor3: [],
-                floorName: {}
-                // floor1_0: {},
-                // floor1_1: {},
-                // floor1_2: {},
+                floorName: {},
+                hotGoods: [],
             }
         },
         components: {
             swiper,
             swiperSlide,
-            floorComponent
+            floorComponent,
+            goodsInfoComponent
             // SwiperDefault,
             // SwiperDefault1,
             // SwiperDefault2,
@@ -106,7 +123,7 @@
         },
         created() {
             axios({
-                url:'https://www.easy-mock.com/mock/5da448471e2136176e0f4a4b/SmileVue/index',
+                url:url.getShoppingMallInfo,
                 method:'get'
             })
             .then((res)=>{
@@ -118,9 +135,7 @@
                 this.floor2 = res.data.data.floor2;
                 this.floor3 = res.data.data.floor3;
                 this.floorName = res.data.data.floorName;
-                // this.floor1_0 = this.floor1[0];
-                // this.floor1_1 = this.floor1[1];
-                // this.floor1_2 = this.floor1[2];
+                this.hotGoods = res.data.data.hotGoods;
                 console.log(res);
             })
             .catch((error)=>{
@@ -187,4 +202,14 @@
         text-align: center;
         border-right: 1px solid #eee;
     }
+    .hot-goods {
+        background-color: #fff;
+    }
+    .hot-title {
+        height: 1.8rem;
+        line-height: 1.8rem;
+        font-size: 14px;
+        text-align: center;
+    }
+
 </style>
