@@ -6,10 +6,12 @@ const bodyParser = require('koa-bodyparser');
 const cors = require('koa2-cors');
 const { connect, initSchemas } = require('./database/init.js');
 const user = require('./appApi/user.js');
+const goods = require('./appApi/goods.js');
 
 app.use(bodyParser()).use(cors());//cors解决垮域
 //装载子路由
 router.use('/user', user.routes());
+router.use('/goods', goods.routes());
 //加载路由中间件
 app.use(router.routes()).use(router.allowedMethods());
 

@@ -13,8 +13,8 @@ import router from './router'
 // import 'swiper/dist/css/swiper.css'
 
 // 按需引入vant
-import {Button, Row, Col, Swipe, SwipeItem, Lazyload, List, Field,NavBar} from 'vant'
-Vue.use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).use(Lazyload).use(List).use(Field).use(NavBar);
+import {Tab, Tabs, Button, Row, Col, Swipe, SwipeItem, Lazyload, List, PullRefresh, Field, NavBar} from 'vant'
+Vue.use(Tab).use(Tabs).use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).use(Lazyload).use(List).use(PullRefresh).use(Field).use(NavBar);
 
 Vue.config.productionTip = false
 

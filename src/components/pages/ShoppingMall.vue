@@ -66,7 +66,7 @@
                 <van-list>
                     <van-row>
                         <van-col span="12" v-for="item in hotGoods" :key="item.goodsId">
-                            <goods-info-component :goodsImage="item.image" :goodsName="item.name" :goodsPrice="item.price"></goods-info-component>
+                            <goods-info-component :goodsId="item.goodsId" :goodsImage="item.image" :goodsName="item.name" :goodsPrice="item.price"></goods-info-component>
                         </van-col>
                     </van-row>
                 </van-list>
@@ -79,7 +79,7 @@
     import axios from 'axios'
     import 'swiper/dist/css/swiper.css'
     import {swiper, swiperSlide } from 'vue-awesome-swiper'
-    import url from '@/serviceAPI.config.js'
+    // import url from '@/serviceAPI.config.js'
     import floorComponent from '../component/FloorComponent'
     import goodsInfoComponent from '../component/GoodsInfoComponent'
     import { toMoney } from '@/filter/moneyFilter.js'
@@ -122,11 +122,8 @@
             }
         },
         created() {
-            axios({
-                url:url.getShoppingMallInfo,
-                method:'get'
-            })
-            .then((res)=>{
+            axios.get('/static/shopping_mall.json').then(res=>{
+                console.log(res);
                 this.bannerPicArray = res.data.data.slides;
                 this.category = res.data.data.category;
                 this.addBanner = res.data.data.advertesPicture;
@@ -136,11 +133,29 @@
                 this.floor3 = res.data.data.floor3;
                 this.floorName = res.data.data.floorName;
                 this.hotGoods = res.data.data.hotGoods;
-                console.log(res);
-            })
-            .catch((error)=>{
+            }).catch(error=>{
                 console.log(error);
-            })
+            });
+
+            // axios({
+            //     url:url.getShoppingMallInfo,
+            //     method:'get'
+            // })
+            // .then((res)=>{
+            //     this.bannerPicArray = res.data.data.slides;
+            //     this.category = res.data.data.category;
+            //     this.addBanner = res.data.data.advertesPicture;
+            //     this.recommendGoods = res.data.data.recommend;
+            //     this.floor1 = res.data.data.floor1;
+            //     this.floor2 = res.data.data.floor2;
+            //     this.floor3 = res.data.data.floor3;
+            //     this.floorName = res.data.data.floorName;
+            //     this.hotGoods = res.data.data.hotGoods;
+            //     console.log(res);
+            // })
+            // .catch((error)=>{
+            //     console.log(error);
+            // })
         },
     }
 </script>
