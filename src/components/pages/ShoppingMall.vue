@@ -194,6 +194,7 @@
         background-color: #fff;
     }
     .type-bar > div {
+        flex: 1;
         padding: .3rem;
         font-size: 12px;
         text-align: center;

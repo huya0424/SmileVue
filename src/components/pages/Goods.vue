@@ -19,7 +19,7 @@
         
         <div class="goods-bottom">
             <div>
-                <van-button size="large" type="primary">加入购物车</van-button>
+                <van-button @click="addGoodsToCart()" size="large" type="primary">加入购物车</van-button>
             </div>
             <div>
                 <van-button size="large" type="danger">直接购买</van-button>
@@ -43,7 +43,7 @@
             }
         },
         created() {
-            this.goodsId = this.$route.query.goodsId;
+            this.goodsId= this.$route.query.goodsId ? this.$route.query.goodsId:this.$route.params.goodsId;
             console.log(this.goodsId);
             this.getGoodsInfo();
         },
@@ -73,6 +73,27 @@
             },
             onClickLeft() {
                 this.$router.go(-1);
+            },
+            addGoodsToCart() {
+                // localStorage.clear();
+                let cartInfo = localStorage.cartInfo ? JSON.parse(localStorage.cartInfo) : [];
+                console.log(cartInfo);
+                let isHaveGoods = cartInfo.find(cart=>cart.goodsId == this.goodsId);
+                if(!isHaveGoods) {
+                    let newGoodsInfo = {
+                        goodsId: this.goodsInfo.ID,
+                        name: this.goodsInfo.NAME,
+                        price: this.goodsInfo.PRESENT_PRICE,
+                        image: this.goodsInfo.IMAGE1,
+                        count: 1
+                    };
+                    cartInfo.push(newGoodsInfo);
+                    localStorage.cartInfo = JSON.stringify(cartInfo);
+                    Toast.success('添加成功');
+                } else {
+                    Toast.success('已有此商品');
+                }
+                this.$router.push('/cart');
             }
         }
     }

@@ -129,7 +129,7 @@ router.post('/getCategorySubList', async(ctx)=>{
     }
 })
 // 根据商品类别获取商品列表
-router.get('/getGoodsListByCategorySubID', async(ctx)=>{
+router.post('/getGoodsListByCategorySubID', async(ctx)=>{
     try {
         let categorySubId = ctx.request.body.categorySubId;
         let page = ctx.request.body.page; //每页显示数量
