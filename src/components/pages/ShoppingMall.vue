@@ -219,6 +219,8 @@
         border-right: 1px solid #eee;
     }
     .hot-goods {
+        height: 130rem;
+        overflow: hidden;
         background-color: #fff;
     }
     .hot-title {

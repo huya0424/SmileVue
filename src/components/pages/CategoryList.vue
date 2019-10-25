@@ -70,8 +70,8 @@
         },
         mounted () {
             let height = document.documentElement.clientHeight;
-            document.getElementById('leftNav').style.height = height - 46 + 'px';
-            document.getElementById('list-div').style.height = height - 90 + 'px';
+            document.getElementById('leftNav').style.height = height - 46 - 50 + 'px';
+            document.getElementById('list-div').style.height = height - 90 - 50 + 'px';
         },
         
         methods: {
@@ -99,7 +99,7 @@
                         categoryId: categoryId
                     }
                 }).then(res=>{
-                    console.log(res);
+                    // console.log(res);
                     if(res.data.code === 200 && res.data.message) {
                         this.active = 0;
                         this.categorySub = res.data.message;

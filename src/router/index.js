@@ -6,6 +6,7 @@ import Register from '@/components/pages/Register'
 import Goods from '@/components/pages/Goods'
 import CategoryList from '@/components/pages/CategoryList'
 import Cart from '@/components/pages/Cart'
+import Member from '@/components/pages/Member'
 import Main from '@/components/pages/Main'
 
 Vue.use(Router)
@@ -19,7 +20,8 @@ export default new Router({
       children: [
         { path: '/',name: 'ShoppingMall',component: ShoppingMall },
         { path: '/categorylist',name: 'CategoryList',component: CategoryList },
-        { path: '/cart',name: 'Cart',component: Cart }
+        { path: '/cart',name: 'Cart',component: Cart },
+        { path: '/member',name: 'Member',component: Member }
       ]
     },
     

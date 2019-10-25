@@ -1,6 +1,6 @@
 <template>
     <div>
-        <van-nav-bar title="商品详情" left-text="返回" left-arrow @click-left="onClickLeft()" />
+        <van-nav-bar title="商品详情" left-text="返回" left-arrow  @click-left="onClickLeft()" />
         <div class="topimage-div">
             <img :src="goodsInfo.IMAGE1" width="100%" />
         </div>
@@ -61,7 +61,7 @@
                         goodsId:  this.goodsId
                     }
                 }).then(res=>{
-                    console.log(res);
+                    // console.log(res);
                     if(res.data.code === 200 && res.data.message) {
                         this.goodsInfo = res.data.message;
                     } else {
@@ -111,6 +111,7 @@
         position: fixed;
         bottom: 0;
         left: 0;
+        z-index: 9;
         display: flex;
         flex-direction: row;
         flex-flow: nowrap;

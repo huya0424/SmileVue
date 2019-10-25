@@ -73,7 +73,7 @@
                     }
                 })
                 .then((res)=>{
-                    console.log(res);
+                    // console.log(res);
                     if(res.data.code === 200 && res.data.message === true) {
                         new Promise((resolve, reject)=>{
                             localStorage.userInfo = {userName: this.username};

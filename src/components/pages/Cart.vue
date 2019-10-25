@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="navbar-div">
-            <van-nav-bar title="购物车" />
+            <van-nav-bar title="购物车" fixed />
         </div>
         <div class="cart-title">
             <van-button type="danger" size="small" @click="clearCart" plain>清空购物车</van-button>
@@ -76,6 +76,7 @@
 
 <style scoped>
     .cart-title {
+        margin-top: 46px;
         padding: 0.5rem;
         height: 2rem;
         /* line-height: 2rem; */
@@ -117,7 +118,7 @@
     }
     .total-money {
         position: fixed;
-        bottom: 0;
+        bottom: 50px;
         left: 0;
         padding: 20px;
         padding-right: 20px;
