@@ -76,6 +76,7 @@
             },
             addGoodsToCart() {
                 // localStorage.clear();
+                // 检测本地是否有购物车信息
                 let cartInfo = localStorage.cartInfo ? JSON.parse(localStorage.cartInfo) : [];
                 console.log(cartInfo);
                 let isHaveGoods = cartInfo.find(cart=>cart.goodsId == this.goodsId);

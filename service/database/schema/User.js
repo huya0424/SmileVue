@@ -15,7 +15,7 @@ const userSchema = new Schema({
 // {
 //     collection: 'user'
 // } 
-// 由于数据库表默认会在表名后加一个's',变成"users"，加入{collection: 'user'}可以让数据库表不加's'
+// 由于数据库表默认会在表名后加一个's',变成"users"，在此处加入{collection: 'user'}可以让数据库表不加's'
 )
 
 userSchema.pre('save', function(next){
